@@ -16,7 +16,7 @@ func _physics_process(delta):
 	# applies movement
 	move_and_slide()
 	#applied animation
-	if !Global.is_attacking:
+	if !Global.is_attacking || !Global.is_climbing:
 		player_animation()
 
 func horizontal_movement():

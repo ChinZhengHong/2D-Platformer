@@ -35,11 +35,13 @@ func player_animation():
 	if Input.is_action_pressed("ui_left") || Input.is_action_just_released("ui_jump"):
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.play("run")
+		$CollisionShape2D.position.x = 7
 	
 	# on right (add is_action_just_released so you continue running after jumping)
 	if Input.is_action_pressed("ui_right") || Input.is_action_just_released("ui_jump"):
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.play("run")
+		$CollisionShape2D.position.x = -7
 		
 	# on idle if nothing is being pressed
 	if !Input.is_anything_pressed():

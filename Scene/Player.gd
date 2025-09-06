@@ -14,6 +14,8 @@ func _physics_process(delta):
 	horizontal_movement()
 	# applies movement
 	move_and_slide()
+	#applied animation
+	player_animation()
 
 func horizontal_movement():
 	# if keys are pressed it will return 1 for ui_right, -1 for ui_left, and 0 for neither

@@ -48,6 +48,11 @@ func _input(event):
 	if event.is_action_pressed("ui_attack"):
 		is_attacking = true
 		$AnimatedSprite2D.play("attack")
+		
+	# on jump
+	if event.is_action_pressed("ui_jump") and is_on_floor():
+		velocity.y = jump_height
+		$AnimatedSprite2D.play("jump")
 
 
 func _on_animated_sprite_2d_animation_finished():

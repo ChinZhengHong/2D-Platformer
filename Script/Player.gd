@@ -16,7 +16,7 @@ func _physics_process(delta):
 	# applies movement
 	move_and_slide()
 	#applied animation
-	if !Global.is_attacking || !Global.is_climbing:
+	if !Global.is_attacking and !Global.is_climbing:
 		player_animation()
 
 func horizontal_movement():
@@ -57,6 +57,9 @@ func _input(event):
 		
 	# on climbing ladders
 	if Global.is_climbing == true:
+		if !Input.is_anything_pressed():
+			$AnimatedSprite2D.play("idle")
+			
 		if Input.is_action_pressed("ui_up"):
 			$AnimatedSprite2D.play("climb")
 			gravity = 100

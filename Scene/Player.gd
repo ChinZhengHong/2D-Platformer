@@ -5,6 +5,8 @@ extends CharacterBody2D
 #player movement variables
 @export var speed = 100
 @export var gravity = 200
+@export var jump_height = -100
+var is_attacking = false
 
 #movement and physics
 func _physics_process(delta):
@@ -15,7 +17,8 @@ func _physics_process(delta):
 	# applies movement
 	move_and_slide()
 	#applied animation
-	player_animation()
+	if !is_attacking:
+		player_animation()
 
 func horizontal_movement():
 	# if keys are pressed it will return 1 for ui_right, -1 for ui_left, and 0 for neither
@@ -23,7 +26,7 @@ func horizontal_movement():
 	# horizontal velocity which moves player left or right based on input
 	velocity.x = horizontal_input * speed
 
-#animation
+# animation
 func player_animation():
 	# on left (add is_action_just_released so you continue running after jumping)
 	if Input.is_action_pressed("ui_left") || Input.is_action_just_released("ui_jump"):
@@ -38,3 +41,10 @@ func player_animation():
 	# on idle if nothing is being pressed
 	if !Input.is_anything_pressed():
 		$AnimatedSprite2D.play("idle")
+		
+# singular input captures
+func _input(event):
+	# on attacking
+	if event.is_action_pressed("ui_attack"):
+		is_attacking = true
+		$AnimatedSprite2D.play("attack")

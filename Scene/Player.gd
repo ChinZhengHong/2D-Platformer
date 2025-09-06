@@ -48,3 +48,7 @@ func _input(event):
 	if event.is_action_pressed("ui_attack"):
 		is_attacking = true
 		$AnimatedSprite2D.play("attack")
+
+
+func _on_animated_sprite_2d_animation_finished():
+	is_attacking = false

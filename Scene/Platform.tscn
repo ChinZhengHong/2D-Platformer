@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://c7nlytwlp3wp1"]
+[gd_scene load_steps=6 format=4 uid="uid://c7nlytwlp3wp1"]
 
 [ext_resource type="Texture2D" uid="uid://1bdvd6pt2ktd" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="1_cv8jc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_egsqh"]
-size = Vector2(31, 80)
+[ext_resource type="Script" path="res://Script/Platform.gd" id="1_h4n1o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dh5lg"]
 texture = ExtResource("1_cv8jc")
@@ -1059,12 +1057,20 @@ terrain_set_0/terrain_2/name = "Platform_Floor"
 terrain_set_0/terrain_2/color = Color(0.972549, 0.941176, 0, 1)
 sources/0 = SubResource("TileSetAtlasSource_dh5lg")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egsqh"]
+size = Vector2(31, 80)
+
 [node name="Area2D" type="Area2D"]
+script = ExtResource("1_h4n1o")
+
+[node name="Platform" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAALABAAAAD//wAAAAAKABIAAAD/////AAAKAA8AAAD//wEAAAAKABAAAAD///7/AAAKAA4AAAAAAP7/AAALAA4AAAAAAP//AAALABIAAAAAAAEAAAALABIAAAAAAAIAAAALABMAAAD//wIAAAAKABMAAAA=")
+tile_set = SubResource("TileSet_vg7n0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 8)
 shape = SubResource("RectangleShape2D_egsqh")
 
-[node name="Level" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAAAAALABAAAAD//wAAAAAKABIAAAD/////AAAKAA8AAAD//wEAAAAKABAAAAD///7/AAAKAA4AAAAAAP7/AAALAA4AAAAAAP//AAALABIAAAAAAAEAAAALABIAAAAAAAIAAAALABMAAAD//wIAAAAKABMAAAA=")
-tile_set = SubResource("TileSet_vg7n0")
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

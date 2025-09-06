@@ -56,6 +56,18 @@ func _input(event):
 	if event.is_action_pressed("ui_jump") and is_on_floor():
 		velocity.y = jump_height
 		$AnimatedSprite2D.play("jump")
+		
+	# on climbing ladders
+	if is_climbing == true:
+		if Input.is_action_pressed("ui_up"):
+			$AnimatedSprite2D.play("climb")
+			gravity = 100
+			velocity.y = -200
+			
+	# reset gravity
+	else:
+		gravity = 200
+		is_climbing = false
 
 
 func _on_animated_sprite_2d_animation_finished():

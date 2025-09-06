@@ -2,13 +2,16 @@
 
 extends CharacterBody2D
 
-#player movement variables
+# player movement variables
 @export var speed = 100
 @export var gravity = 200
 @export var jump_height = -100
-var is_attacking = false
 
-#movement and physics
+# movement state
+var is_attacking = false
+var is_climbing = false
+
+# movement and physics
 func _physics_process(delta):
 	# vertical movement velocity(down)
 	velocity.y += gravity * delta

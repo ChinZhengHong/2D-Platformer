@@ -60,7 +60,7 @@ func _physics_process(delta):
 		State.MOVING_UP:
 			progress += delta
 			#change its position
-			position.y = lerp(initial_position, initial_position - movement_range, progress / (movement_range / movement_speed))
+			position.y = lerp(initial_position, initial_position - movement_range, progress / (movement_range / movement_range))
 			if progress >= (movement_range / movement_speed):
 				switch_state(State.WAIT_AT_TOP)
 				

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://culi78sdl7u6f"]
+[gd_scene load_steps=43 format=3 uid="uid://culi78sdl7u6f"]
 
 [ext_resource type="Texture2D" uid="uid://dohiy8rd7cjxm" path="res://Assets/Kings and Pigs/Sprites/01-King Human/Idle (78x58).png" id="1_3ruo4"]
 [ext_resource type="Script" path="res://Scene/Player.gd" id="1_igqow"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://1kw8i7c600wg" path="res://Assets/Kings and Pigs/Sprites/01-King Human/Attack (78x58).png" id="2_ilp1d"]
 [ext_resource type="Texture2D" uid="uid://dqd5ud37rnsns" path="res://Assets/Kings and Pigs/Sprites/01-King Human/Jump (78x58).png" id="3_i5ayy"]
 [ext_resource type="Texture2D" uid="uid://c5j00wy2rk72v" path="res://Assets/Kings and Pigs/Sprites/01-King Human/Run (78x58).png" id="3_os4kv"]
+[ext_resource type="Texture2D" uid="uid://c221ro2fpk5s2" path="res://Assets/Kings and Pigs/Sprites/01-King Human/Hit (78x58).png" id="4_khqfa"]
+[ext_resource type="Texture2D" uid="uid://sn0upismndmj" path="res://Assets/Kings and Pigs/Sprites/01-King Human/Dead (78x58).png" id="5_nxd7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x22wg"]
 
@@ -32,6 +34,30 @@ region = Rect2(234, 0, 78, 58)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0gm3l"]
 atlas = ExtResource("2_ctpv2")
 region = Rect2(312, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdvru"]
+atlas = ExtResource("4_khqfa")
+region = Rect2(0, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ue6hs"]
+atlas = ExtResource("4_khqfa")
+region = Rect2(78, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p72yy"]
+atlas = ExtResource("5_nxd7s")
+region = Rect2(0, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f07y5"]
+atlas = ExtResource("5_nxd7s")
+region = Rect2(78, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_felvu"]
+atlas = ExtResource("5_nxd7s")
+region = Rect2(156, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lubjs"]
+atlas = ExtResource("5_nxd7s")
+region = Rect2(234, 0, 78, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hbc6k"]
 atlas = ExtResource("1_3ruo4")
@@ -125,7 +151,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_klcjo")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 7.0
 }, {
@@ -142,6 +168,34 @@ animations = [{
 "loop": true,
 "name": &"climb",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdvru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ue6hs")
+}],
+"loop": false,
+"name": &"damage",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p72yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f07y5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_felvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lubjs")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -228,5 +282,6 @@ shape = SubResource("RectangleShape2D_x22wg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_6a8ku")
-animation = &"attack"
-frame_progress = 0.419152
+animation = &"run"
+frame = 3
+frame_progress = 0.775901

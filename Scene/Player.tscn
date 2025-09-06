@@ -277,12 +277,12 @@ animations = [{
 script = ExtResource("1_igqow")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 0)
+position = Vector2(-7, 5)
 shape = SubResource("RectangleShape2D_x22wg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_6a8ku")
-animation = &"idle"
+animation = &"jump"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

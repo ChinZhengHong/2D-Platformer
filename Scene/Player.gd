@@ -72,3 +72,4 @@ func _input(event):
 
 func _on_animated_sprite_2d_animation_finished():
 	is_attacking = false
+	is_climbing = false

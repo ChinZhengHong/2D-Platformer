@@ -34,3 +34,7 @@ func player_animation():
 	if Input.is_action_pressed("ui_right") || Input.is_action_just_released("ui_jump"):
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.play("run")
+		
+	# on idle if nothing is being pressed
+	if !Input.is_anything_pressed():
+		$AnimatedSprite2D.play("idle")

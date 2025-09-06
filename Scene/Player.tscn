@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://culi78sdl7u6f"]
+
+[ext_resource type="Texture2D" uid="uid://dohiy8rd7cjxm" path="res://Assets/Kings and Pigs/Sprites/01-King Human/Idle (78x58).png" id="1_3ruo4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x22wg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbc6k"]
+atlas = ExtResource("1_3ruo4")
+region = Rect2(0, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgkxp"]
+atlas = ExtResource("1_3ruo4")
+region = Rect2(78, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf43j"]
+atlas = ExtResource("1_3ruo4")
+region = Rect2(156, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpffe"]
+atlas = ExtResource("1_3ruo4")
+region = Rect2(234, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg3xa"]
+atlas = ExtResource("1_3ruo4")
+region = Rect2(312, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtnl6"]
+atlas = ExtResource("1_3ruo4")
+region = Rect2(390, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8j24"]
+atlas = ExtResource("1_3ruo4")
+region = Rect2(468, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mtj4"]
+atlas = ExtResource("1_3ruo4")
+region = Rect2(546, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrc4i"]
+atlas = ExtResource("1_3ruo4")
+region = Rect2(624, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdllc"]
+atlas = ExtResource("1_3ruo4")
+region = Rect2(702, 0, 78, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhcup"]
+atlas = ExtResource("1_3ruo4")
+region = Rect2(780, 0, 78, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6a8ku"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbc6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgkxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf43j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpffe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg3xa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtnl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8j24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mtj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrc4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdllc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhcup")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x22wg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6a8ku")
+animation = &"idle"

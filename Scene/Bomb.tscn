@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bmi3x00qiohuv" path="res://Assets/Kings and Pigs/Sprites/09-Bomb/Boooooom (52x56).png" id="2_tju78"]
 [ext_resource type="Texture2D" uid="uid://ccha35pmbi78h" path="res://Assets/Kings and Pigs/Sprites/09-Bomb/Bomb On (52x56).png" id="2_xo132"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eup2i"]
-size = Vector2(13, 9)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hp6b5"]
 atlas = ExtResource("2_tju78")
 region = Rect2(0, 0, 52, 56)
@@ -90,17 +87,19 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jkm15"]
+radius = 3.0
+
 [node name="Bomb" type="Area2D"]
 script = ExtResource("1_tf4ch")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_eup2i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uthuu")
 animation = &"moving"
 frame_progress = 0.639704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jkm15")
 
 [node name="Timer" type="Timer" parent="."]
 

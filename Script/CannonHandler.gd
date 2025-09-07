@@ -10,7 +10,7 @@ func _ready():
 	# play cannon lightning animation on start
 	$Body.play("matching")
 	
-func  _process(delta):
+func  _process(_delta):
 	# randomizes speech bubble randomize time
 	$Timer.wait_time = randi_range(1, 10)
 	

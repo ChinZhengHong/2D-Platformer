@@ -286,5 +286,10 @@ sprite_frames = SubResource("SpriteFrames_6a8ku")
 animation = &"jump"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+limit_left = -70
+limit_top = -70
+limit_right = 1200
+limit_bottom = 650
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

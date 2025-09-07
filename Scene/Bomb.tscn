@@ -99,7 +99,8 @@ shape = SubResource("RectangleShape2D_eup2i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uthuu")
-animation = &"explode"
+animation = &"moving"
+frame_progress = 0.639704
 
 [node name="Timer" type="Timer" parent="."]
 

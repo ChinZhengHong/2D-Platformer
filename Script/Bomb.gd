@@ -2,6 +2,8 @@
 
 extends Area2D
 
+var rotation_speed = 1
+
 # default animation on spawn
 func _ready():
 	$AnimatedSprite2D.play("moving")
@@ -30,3 +32,9 @@ func _on_body_entered(body):
 func _on_timer_timeout():
 	if is_instance_valid(self):
 		self.is_queued_for_deletion()
+		
+# rolls the bomb
+func _physics_process(delta):
+	# rotate the bomb if it hasn't exploded
+	if Global.is_bomb_moving == true:
+		$AnimatedSprite2D.rotation += rotation_speed * delta

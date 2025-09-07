@@ -1533,12 +1533,13 @@ curve = SubResource("Curve2D_6uk1w")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="BombPath/Path2D"]
 position = Vector2(124, 104)
+rotates = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BombPath/Path2D"]
 libraries = {
 "": SubResource("AnimationLibrary_gepau")
 }
-speed_scale = 0.5
+speed_scale = 0.2
 
 [node name="BombSpawner" parent="." instance=ExtResource("5_e1mpu")]
 position = Vector2(130, 103)

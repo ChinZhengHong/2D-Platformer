@@ -11,12 +11,22 @@ func _on_body_entered(body):
 	if body.name == "Player":
 		$AnimatedSprite2D.play("explode")
 		$Timer.start()
-		
+		Global.is_bomb_moving = false
+	
+	# Option 1
 	#if the bomb collides with our level Tilemap(floor and wall)
+	if body.name == "Level" and !body.name.begins_with("Platform"):
+		$AnimatedSprite2D.play("explode")
+		$Timer.start()
+		Global.is_bomb_moving = false
+	
+	# Option 2
+	#if the bomb collides with our wall scene, explode and remove
 	if body.name.begins_with("Wall"):
 		$AnimatedSprite2D.play("explode")
 		$Timer.start()
+		Global.is_bomb_moving = false
 		
 func _on_timer_timeout():
 	if is_instance_valid(self):
-		self.queue_free()
+		self.is_queued_for_deletion()

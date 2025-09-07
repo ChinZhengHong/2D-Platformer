@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ccha35pmbi78h" path="res://Assets/Kings and Pigs/Sprites/09-Bomb/Bomb On (52x56).png" id="2_xo132"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eup2i"]
+size = Vector2(13, 9)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hp6b5"]
 atlas = ExtResource("2_tju78")
@@ -93,6 +94,7 @@ animations = [{
 script = ExtResource("1_tf4ch")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_eup2i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

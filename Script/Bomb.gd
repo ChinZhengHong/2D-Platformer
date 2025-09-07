@@ -13,7 +13,7 @@ func _on_body_entered(body):
 		$Timer.start()
 		
 	#if the bomb collides with our level Tilemap(floor and wall)
-	if body.name == "Level":
+	if body.name.begins_with("Wall"):
 		$AnimatedSprite2D.play("explode")
 		$Timer.start()
 		

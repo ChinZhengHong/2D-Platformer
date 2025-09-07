@@ -1,7 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ct8nn6dahxjf8"]
+[gd_scene load_steps=24 format=3 uid="uid://ct8nn6dahxjf8"]
 
+[ext_resource type="Script" path="res://Script/CannonHandler.gd" id="1_3ol06"]
 [ext_resource type="Texture2D" uid="uid://cgq1sw7aap4hc" path="res://Assets/Kings and Pigs/Sprites/07-Pig With a Match/Match On (26x18).png" id="1_43qhd"]
 [ext_resource type="Texture2D" uid="uid://dj15wyid4ryqx" path="res://Assets/Kings and Pigs/Sprites/07-Pig With a Match/Lighting the Cannon (26x18).png" id="2_6jft3"]
+[ext_resource type="Texture2D" uid="uid://bhb4a6t31dmps" path="res://Assets/Kings and Pigs/Sprites/13-Dialogue Boxes/Boom In (24x8).png" id="4_54hnq"]
+[ext_resource type="Texture2D" uid="uid://5pjpsc6qdo6x" path="res://Assets/Kings and Pigs/Sprites/13-Dialogue Boxes/Loser In (24x8).png" id="5_1lwl2"]
+[ext_resource type="Texture2D" uid="uid://c1s3j136sw08j" path="res://Assets/Kings and Pigs/Sprites/13-Dialogue Boxes/WTF In (24x8).png" id="6_671x8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8q3rn"]
 atlas = ExtResource("1_43qhd")
@@ -58,34 +62,105 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpohk"]
+atlas = ExtResource("4_54hnq")
+region = Rect2(0, 0, 34, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww0sr"]
+atlas = ExtResource("4_54hnq")
+region = Rect2(34, 0, 34, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grjuj"]
+atlas = ExtResource("4_54hnq")
+region = Rect2(68, 0, 34, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgm0h"]
+atlas = ExtResource("5_1lwl2")
+region = Rect2(0, 0, 34, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhnjm"]
+atlas = ExtResource("5_1lwl2")
+region = Rect2(34, 0, 34, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccsd5"]
+atlas = ExtResource("5_1lwl2")
+region = Rect2(68, 0, 34, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myo77"]
+atlas = ExtResource("6_671x8")
+region = Rect2(0, 0, 34, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmhet"]
+atlas = ExtResource("6_671x8")
+region = Rect2(34, 0, 34, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmswi"]
+atlas = ExtResource("6_671x8")
+region = Rect2(68, 0, 34, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0lsa8"]
 animations = [{
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpohk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww0sr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grjuj")
+}],
+"loop": false,
 "name": &"boom",
-"speed": 5.0
+"speed": 3.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgm0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhnjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccsd5")
+}],
+"loop": false,
 "name": &"loser",
-"speed": 5.0
+"speed": 3.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myo77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmhet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmswi")
+}],
+"loop": false,
 "name": &"swearing",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [node name="CannonHandler" type="Node2D"]
+script = ExtResource("1_3ol06")
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_gd6ex")
 animation = &"idle"
 flip_h = true
 
 [node name="SpeechBubble" type="AnimatedSprite2D" parent="."]
+position = Vector2(-9, -33)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_0lsa8")
 animation = &"swearing"
+frame = 2
+frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

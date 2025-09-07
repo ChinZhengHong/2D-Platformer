@@ -3,14 +3,19 @@
 extends CharacterBody2D
 
 # player movement variables
-@export var speed = 100
+@export var speed = 200
 @export var gravity = 200
-@export var jump_height = -100
+@export var jump_height = -150
+
+# Keep track last direction ( 1 for right and -1 for left, 0 for none)
+var last_direction = 0
+# check direction of the player's movement
+var current_direction = 0
 
 # movement and physics
 func _physics_process(delta):
 	# vertical movement velocity(down)
-	velocity.y += gravity * delta
+	velocity.y += gravity * delta * 2
 	# horizontal movement processing (left, right)
 	horizontal_movement()
 	# applies movement
@@ -75,3 +80,36 @@ func _input(event):
 func _on_animated_sprite_2d_animation_finished():
 	Global.is_attacking = false
 	Global.is_climbing = false
+	
+func _ready():
+	current_direction = -1
+	
+func _process(delta):
+	if velocity.x > 0: # Moving right
+		current_direction = 1
+	if velocity.x < 0: # Moving left
+		current_direction = -1
+		
+	# If the firection has changed, play the approriate animation
+	if current_direction != last_direction:
+		if current_direction == 1:
+			# limits
+			$Camera2D.limit_left = -110
+			$Camera2D.limit_bottom = 705
+			$Camera2D.limit_top = 40
+			$Camera2D.limit_right = 1068
+			
+			# Play the right animation
+			$AnimationPlayer.play("move_right")
+		
+		elif current_direction == -1:
+			# limits
+			$Camera2D.limit_left = 90
+			$Camera2D.limit_bottom = 705
+			$Camera2D.limit_top = 40
+			$Camera2D.limit_right = 1268
+			
+			# Play the left animation
+			$AnimationPlayer.play("move_left")
+			
+		last_direction = current_direction

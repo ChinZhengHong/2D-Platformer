@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://cgg3udj0sq1xo"]
+
+[ext_resource type="Script" path="res://Script/Box.gd" id="1_ijjjw"]
+[ext_resource type="Texture2D" uid="uid://bcb10ey5ggvu2" path="res://Assets/Kings and Pigs/Sprites/08-Box/Hit.png" id="2_xo87c"]
+[ext_resource type="Texture2D" uid="uid://cwb88dltum2ut" path="res://Assets/Kings and Pigs/Sprites/08-Box/Idle.png" id="3_slk7j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mobea"]
+atlas = ExtResource("2_xo87c")
+region = Rect2(0, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ld8b6"]
+atlas = ExtResource("3_slk7j")
+region = Rect2(0, 0, 22, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uthuu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mobea")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ld8b6")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jkm15"]
+radius = 3.0
+
+[node name="Box" type="Area2D"]
+script = ExtResource("1_ijjjw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uthuu")
+animation = &"explode"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jkm15")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1539,7 +1539,7 @@ rotates = false
 libraries = {
 "": SubResource("AnimationLibrary_gepau")
 }
-speed_scale = 0.2
+speed_scale = 0.5
 
 [node name="BombSpawner" parent="." instance=ExtResource("5_e1mpu")]
 position = Vector2(130, 103)

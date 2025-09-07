@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=3 uid="uid://ct8nn6dahxjf8"]
+
+[ext_resource type="Texture2D" uid="uid://cgq1sw7aap4hc" path="res://Assets/Kings and Pigs/Sprites/07-Pig With a Match/Match On (26x18).png" id="1_43qhd"]
+[ext_resource type="Texture2D" uid="uid://dj15wyid4ryqx" path="res://Assets/Kings and Pigs/Sprites/07-Pig With a Match/Lighting the Cannon (26x18).png" id="2_6jft3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q3rn"]
+atlas = ExtResource("1_43qhd")
+region = Rect2(0, 0, 26, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwbf4"]
+atlas = ExtResource("1_43qhd")
+region = Rect2(26, 0, 26, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flwy6"]
+atlas = ExtResource("1_43qhd")
+region = Rect2(52, 0, 26, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok1lx"]
+atlas = ExtResource("2_6jft3")
+region = Rect2(0, 0, 26, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywt43"]
+atlas = ExtResource("2_6jft3")
+region = Rect2(26, 0, 26, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yigpt"]
+atlas = ExtResource("2_6jft3")
+region = Rect2(52, 0, 26, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gd6ex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q3rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwbf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flwy6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok1lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywt43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yigpt")
+}],
+"loop": false,
+"name": &"matching",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0lsa8"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"boom",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"loser",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"swearing",
+"speed": 5.0
+}]
+
+[node name="CannonHandler" type="Node2D"]
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gd6ex")
+animation = &"idle"
+flip_h = true
+
+[node name="SpeechBubble" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0lsa8")
+animation = &"swearing"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

@@ -33,7 +33,7 @@ func _on_timer_timeout():
 @export var flip_h = false
 @export var flip_v = false
 
-func _process(delta):
+func _process(_delta):
 	# allows us to flip the pigs around in the editor
 	$AnimatedSprite2D.flip_h = flip_h
 	$AnimatedSprite2D.flip_v = flip_v

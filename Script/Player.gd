@@ -84,7 +84,7 @@ func _on_animated_sprite_2d_animation_finished():
 func _ready():
 	current_direction = -1
 	
-func _process(delta):
+func _process(_delta):
 	if velocity.x > 0: # Moving right
 		current_direction = 1
 	if velocity.x < 0: # Moving left

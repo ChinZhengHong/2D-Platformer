@@ -2,6 +2,13 @@
 
 extends CharacterBody2D
 
+# custom signals
+signal update_lives(lives,max_lives)
+
+#health stats
+var max_lives = 3
+var lives = 3
+
 # player movement variables
 @export var speed = 200
 @export var gravity = 200

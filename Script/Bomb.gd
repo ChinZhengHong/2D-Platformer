@@ -14,6 +14,8 @@ func _on_body_entered(body):
 		$AnimatedSprite2D.play("explode")
 		$Timer.start()
 		Global.is_bomb_moving = false
+		# deal damage
+		body.take_damage()
 	
 	# Option 1
 	#if the bomb collides with our level Tilemap(floor and wall)

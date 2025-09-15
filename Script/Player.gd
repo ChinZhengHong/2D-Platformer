@@ -86,6 +86,7 @@ func _input(event):
 
 func _on_animated_sprite_2d_animation_finished():
 	Global.is_attacking = false
+	set_physics_process(true)
 	Global.is_climbing = false
 	
 func _ready():
@@ -129,4 +130,6 @@ func take_damage():
 		update_lives.emit(lives,max_lives)
 		print(lives)
 		# play damage animation
-		$AnimationPlayer.play("damage")
+		$AnimatedSprite2D.play("damage")
+		# allows animation to play'
+		set_physics_process(false)

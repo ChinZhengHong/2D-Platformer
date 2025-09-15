@@ -40,25 +40,25 @@ region = Rect2(182, 0, 26, 30)
 atlas = ExtResource("2_ethvb")
 region = Rect2(208, 0, 26, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pbojr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxto0"]
 atlas = ExtResource("3_hw7bq")
-region = Rect2(0, 0, 26, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xbf3r"]
-atlas = ExtResource("3_hw7bq")
-region = Rect2(26, 0, 26, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3b1uv"]
-atlas = ExtResource("3_hw7bq")
-region = Rect2(52, 0, 26, 30)
+region = Rect2(104, 0, 26, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kw8tf"]
 atlas = ExtResource("3_hw7bq")
 region = Rect2(78, 0, 26, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rxto0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b1uv"]
 atlas = ExtResource("3_hw7bq")
-region = Rect2(104, 0, 26, 30)
+region = Rect2(52, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbf3r"]
+atlas = ExtResource("3_hw7bq")
+region = Rect2(26, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbojr"]
+atlas = ExtResource("3_hw7bq")
+region = Rect2(0, 0, 26, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vfr1b"]
 animations = [{
@@ -96,19 +96,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pbojr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xbf3r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3b1uv")
+"texture": SubResource("AtlasTexture_rxto0")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kw8tf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rxto0")
+"texture": SubResource("AtlasTexture_3b1uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbf3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbojr")
 }],
 "loop": false,
 "name": &"pig_throw",
@@ -122,7 +122,6 @@ _data = {
 point_count = 2
 
 [sub_resource type="Animation" id="Animation_0sloy"]
-length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -138,6 +137,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ronss"]
 resource_name = "box_movement"
+length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -145,7 +145,7 @@ tracks/0/path = NodePath("PathFollow2D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 10),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]

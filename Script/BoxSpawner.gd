@@ -25,9 +25,9 @@ func _on_timer_timeout():
 	$AnimatedSprite2D.play("pig_idle")
 	
 	# spawn a box onto our path if there are no boxes available and can_spawn is True
-	if box_path.get_child_count <= 0 and Global.can_spawn == true:
-		var spawn_box = box.instantiate()
-		box_path.add_child(spawn_box)
+	if box_path.get_child_count() <= 0 and Global.can_spawn == true:
+		var spawned_box = box.instantiate()
+		box_path.add_child(spawned_box)
 		
 # Allows us to flip our pigs around in the editor
 @export var flip_h = false

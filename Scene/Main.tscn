@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=4 uid="uid://bo0c57lxcutsd"]
+[gd_scene load_steps=15 format=4 uid="uid://bo0c57lxcutsd"]
 
 [ext_resource type="PackedScene" uid="uid://culi78sdl7u6f" path="res://Scene/Player.tscn" id="1_ffw5b"]
 [ext_resource type="Texture2D" uid="uid://1bdvd6pt2ktd" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="2_6c0p0"]
 [ext_resource type="PackedScene" uid="uid://c53yw5s2508ru" path="res://Scene/Wall.tscn" id="3_5a3q2"]
 [ext_resource type="PackedScene" uid="uid://d0808q34b7yy4" path="res://Scene/Ladder.tscn" id="3_eglv2"]
 [ext_resource type="PackedScene" uid="uid://cfhu0kvbgwt7q" path="res://Scene/BombSpawner.tscn" id="5_e1mpu"]
+[ext_resource type="PackedScene" uid="uid://cmbob4p41l6s4" path="res://Scene/BoxSpawner.tscn" id="6_0fy72"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_op3os"]
 texture = ExtResource("2_6c0p0")
@@ -1543,3 +1544,25 @@ speed_scale = 0.5
 
 [node name="BombSpawner" parent="." instance=ExtResource("5_e1mpu")]
 position = Vector2(130, 103)
+
+[node name="BoxSpawner" type="Node2D" parent="."]
+
+[node name="BoxSpawner" parent="BoxSpawner" instance=ExtResource("6_0fy72")]
+position = Vector2(223, 484)
+flip_h = true
+
+[node name="BoxSpawner2" parent="BoxSpawner" instance=ExtResource("6_0fy72")]
+position = Vector2(1091, 614)
+rotation = -3.14159
+flip_h = true
+flip_v = true
+
+[node name="BoxSpawner3" parent="BoxSpawner" instance=ExtResource("6_0fy72")]
+position = Vector2(57, 100)
+flip_h = true
+
+[node name="BoxSpawner4" parent="BoxSpawner" instance=ExtResource("6_0fy72")]
+position = Vector2(863, 227)
+rotation = -3.14159
+flip_h = true
+flip_v = true

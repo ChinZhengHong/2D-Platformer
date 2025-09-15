@@ -120,3 +120,13 @@ func _process(_delta):
 			$AnimationPlayer.play("move_left")
 			
 		last_direction = current_direction
+
+# takes damage
+func take_damage():
+	# deduct and update lives
+	if lives > 0:
+		lives = lives - 1
+		update_lives.emit(lives,max_lives)
+		print(lives)
+		# play damage animation
+		$AnimationPlayer.play("damage")

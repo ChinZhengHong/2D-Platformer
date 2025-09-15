@@ -31,7 +31,7 @@ func _on_body_entered(body):
 		
 func _on_timer_timeout():
 	if is_instance_valid(self):
-		self.is_queued_for_deletion()
+		self.queue_free()
 		
 # rolls the bomb
 func _physics_process(delta):

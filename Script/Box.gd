@@ -8,16 +8,16 @@ func _ready():
 	
 func _on_body_entered(body):
 	# if the box collides with the player, play the explosion animation and disable spawning
-	if body.name == "Player":
+	if body.name == "Player" or body.name == "Level":
 		$AnimatedSprite2D.play("explode")
 		# Disable spawning in BoxSpawner
 		Global.disable_spawning()
 
 	# if the box collides with the wall , remove so that it can respawn
 	if body.name.begins_with("Wall"):
-		is_queued_for_deletion()
+		queue_free()
 
 # if the box explosion animation is playing, remove it from the scene
 func _on_animated_sprite_2d_animation_finished():
 	if $AnimatedSprite2D.animation == "explode":
-		is_queued_for_deletion()
+		queue_free()

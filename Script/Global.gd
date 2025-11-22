@@ -26,3 +26,6 @@ func disable_spawning():
 # function to enable box spawning
 func enable_spawning():
 	can_spawn = true
+
+# pickups
+enum Pickups {HEALTH, SCORE, ATTACK}

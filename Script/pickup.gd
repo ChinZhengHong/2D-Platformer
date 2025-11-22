@@ -31,3 +31,11 @@ func _processs (_delta):
 			pickup_texture.set_texture(score_texture)
 		elif pickup == Pickups.ATTACK:
 			pickup_texture.set_texture(attack_boost_texture)
+			
+func _ready():
+	if pickup == Pickups.HEALTH:
+		pickup_texture.set_texture(health_texture)
+	elif pickup == Pickups.SCORE:
+		pickup_texture.set_texture(score_texture)
+	elif pickup == Pickups.ATTACK:
+		pickup_texture.set_texture(attack_boost_texture)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bo0c57lxcutsd"]
+[gd_scene load_steps=16 format=4 uid="uid://bo0c57lxcutsd"]
 
 [ext_resource type="PackedScene" uid="uid://culi78sdl7u6f" path="res://Scene/Player.tscn" id="1_ffw5b"]
 [ext_resource type="Texture2D" uid="uid://1bdvd6pt2ktd" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="2_6c0p0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d0808q34b7yy4" path="res://Scene/Ladder.tscn" id="3_eglv2"]
 [ext_resource type="PackedScene" uid="uid://cfhu0kvbgwt7q" path="res://Scene/BombSpawner.tscn" id="5_e1mpu"]
 [ext_resource type="PackedScene" uid="uid://cmbob4p41l6s4" path="res://Scene/BoxSpawner.tscn" id="6_0fy72"]
+[ext_resource type="PackedScene" uid="uid://cfv2j87g56gcx" path="res://Scene/Pickup.tscn" id="7_mvau6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_op3os"]
 texture = ExtResource("2_6c0p0")
@@ -1566,3 +1567,14 @@ position = Vector2(863, 227)
 rotation = -3.14159
 flip_h = true
 flip_v = true
+
+[node name="Pickup" parent="." instance=ExtResource("7_mvau6")]
+position = Vector2(530, 224)
+
+[node name="Pickup2" parent="." instance=ExtResource("7_mvau6")]
+position = Vector2(628, 354)
+pickup = 1
+
+[node name="Pickup3" parent="." instance=ExtResource("7_mvau6")]
+position = Vector2(474, 481)
+pickup = 2

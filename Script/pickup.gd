@@ -9,6 +9,8 @@ extends Area2D
 func _on_body_entered(body):
 	if body.name == "Player":
 		get_tree().queue_delete(self)
+		# adds pickup to player to change player stats
+		body.add_pickup(pickup)
 
 # pickup enum
 @export var pickup : Global.Pickups

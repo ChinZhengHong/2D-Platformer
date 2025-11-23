@@ -133,3 +133,20 @@ func take_damage():
 		$AnimatedSprite2D.play("damage")
 		# allows animation to play'
 		set_physics_process(false)
+		
+# add to pickups to our player and updates our lives / attack boosts
+func add_pickup(pickup):
+	# increases life count if we don't have 3 lives already
+	if pickup == Global.Pickups.HEALTH:
+		if lives < max_lives:
+			lives += 1
+			update_lives.emit(lives,max_lives)
+			print(lives)
+	
+	# temporary allow us to destroy boxes/bombs
+	if pickup == Global.Pickups.ATTACK:
+		pass
+		
+	# increase our player's score
+	if pickup == Global.Pickups.SCORE:
+		pass

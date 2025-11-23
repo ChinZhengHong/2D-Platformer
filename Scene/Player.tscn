@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://culi78sdl7u6f"]
+[gd_scene load_steps=50 format=3 uid="uid://culi78sdl7u6f"]
 
 [ext_resource type="Texture2D" uid="uid://dohiy8rd7cjxm" path="res://Assets/Kings and Pigs/Sprites/01-King Human/Idle (78x58).png" id="1_3ruo4"]
 [ext_resource type="Script" path="res://Script/Player.gd" id="1_igqow"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://c5j00wy2rk72v" path="res://Assets/Kings and Pigs/Sprites/01-King Human/Run (78x58).png" id="3_os4kv"]
 [ext_resource type="Texture2D" uid="uid://c221ro2fpk5s2" path="res://Assets/Kings and Pigs/Sprites/01-King Human/Hit (78x58).png" id="4_khqfa"]
 [ext_resource type="Texture2D" uid="uid://sn0upismndmj" path="res://Assets/Kings and Pigs/Sprites/01-King Human/Dead (78x58).png" id="5_nxd7s"]
+[ext_resource type="Script" path="res://GUI/Health.gd" id="9_beuk1"]
+[ext_resource type="Texture2D" uid="uid://daomqyb4fg30b" path="res://Assets/heart/heart/sprite_4.png" id="9_fvlvy"]
+[ext_resource type="FontFile" uid="uid://6t41kx6p1hri" path="res://Assets/Font/QuinqueFive.otf" id="10_ljuf4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x22wg"]
 
@@ -361,5 +364,36 @@ root_node = NodePath("../Camera2D")
 libraries = {
 "": SubResource("AnimationLibrary_fb0nc")
 }
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Health" type="ColorRect" parent="UI"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 122.0
+offset_bottom = 60.0
+color = Color(0.172549, 0.172549, 0.172549, 0.407843)
+script = ExtResource("9_beuk1")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Health"]
+position = Vector2(30, 17)
+texture = ExtResource("9_fvlvy")
+
+[node name="Label" type="Label" parent="UI/Health"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_ljuf4")
+theme_override_font_sizes/font_size = 15
+text = "0"
+vertical_alignment = 1
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

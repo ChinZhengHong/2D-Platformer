@@ -92,6 +92,12 @@ func _on_animated_sprite_2d_animation_finished():
 func _ready():
 	current_direction = -1
 	
+	# updates our UI labels when signals are emitted
+	update_lives.connect($UI/Health.update_lives)
+	
+	# show our correct lives value on load
+	$UI/Health/Label.text = str(lives)
+	
 func _process(_delta):
 	if velocity.x > 0: # Moving right
 		current_direction = 1

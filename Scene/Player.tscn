@@ -340,8 +340,7 @@ shape = SubResource("RectangleShape2D_x22wg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_6a8ku")
-animation = &"run"
-frame_progress = 0.725364
+animation = &"attack"
 
 [node name="Camera2D(Try something)" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfv2j87g56gcx"]
 
-[ext_resource type="Texture2D" uid="uid://daomqyb4fg30b" path="res://Assets/heart/heart/sprite_4.png" id="1_vhh15"]
 [ext_resource type="Script" path="res://Script/pickup.gd" id="1_xnh7i"]
+[ext_resource type="Texture2D" uid="uid://cu5u0r3r6iisd" path="res://Assets/heart/heart/sprite_0.png" id="2_y7icj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gfvab"]
 
@@ -13,6 +13,6 @@ shape = SubResource("CircleShape2D_gfvab")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4, -2)
-texture = ExtResource("1_vhh15")
+texture = ExtResource("2_y7icj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 # custom signals
 signal update_lives(lives,max_lives)
+signal update_attack_boost(attack_time_left)
 
 #health stats
 var max_lives = 3
@@ -18,6 +19,9 @@ var lives = 3
 var last_direction = 0
 # check direction of the player's movement
 var current_direction = 0
+
+# seconds allowed to attack
+var attack_time_left = 0 
 
 # movement and physics
 func _physics_process(delta):
@@ -58,9 +62,9 @@ func player_animation():
 # singular input captures
 func _input(event):
 	# on attacking
-	if event.is_action_pressed("ui_attack"):
-		Global.is_attacking = true
-		$AnimatedSprite2D.play("attack")
+	if event.is_action_just_pressed("ui_attack"):
+		if Global.is_attacking == true:
+			$AnimatedSprite2D.play("attack")
 		
 	# on jump
 	if event.is_action_pressed("ui_jump") and is_on_floor():
@@ -85,12 +89,16 @@ func _input(event):
 
 
 func _on_animated_sprite_2d_animation_finished():
-	Global.is_attacking = false
+	if attack_time_left <= 0:
+		Global.is_attacking = false
 	set_physics_process(true)
 	Global.is_climbing = false
 	
 func _ready():
 	current_direction = -1
+	
+	# set our attack timer to be the value of our wait time
+	attack_time_left = $AttackBoostTimer.wait_time
 	
 	# updates our UI labels when signals are emitted
 	update_lives.connect($UI/Health.update_lives)
@@ -151,8 +159,14 @@ func add_pickup(pickup):
 	
 	# temporary allow us to destroy boxes/bombs
 	if pickup == Global.Pickups.ATTACK:
-		pass
+		Global.is_attacking = true
 		
 	# increase our player's score
 	if pickup == Global.Pickups.SCORE:
 		pass
+
+
+func _on_attack_boost_timer_timeout():
+	# set attack back to false if the time on boost runs out
+	if attack_time_left <= 0:
+		Global.is_attacking = false

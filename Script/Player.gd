@@ -35,6 +35,7 @@ func _physics_process(delta):
 	if !Global.is_attacking and !Global.is_climbing:
 		player_animation()
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	# countdown for attack boost
 	if Global.is_attacking:
@@ -51,6 +52,8 @@ func _physics_process(delta):
 			#remove bomb
 			if target.name == "Bomb" and Input.is_action_pressed("ui_attack"):
 				Global.is_bomb_moving = false
+=======
+>>>>>>> parent of 649fae7 (fix the bug when player climbing and take the damage , will stuck at ladder)
 =======
 >>>>>>> parent of 649fae7 (fix the bug when player climbing and take the damage , will stuck at ladder)
 

@@ -27,22 +27,32 @@ var attack_time_left = 0
 func _physics_process(delta):
 	# vertical movement velocity(down)
 	velocity.y += gravity * delta * 2
-	
 	# horizontal movement processing (left, right)
 	horizontal_movement()
-	
 	# applies movement
 	move_and_slide()
-	
 	#applied animation
-	if !Global.is_climbing:
+	if !Global.is_attacking and !Global.is_climbing:
 		player_animation()
+<<<<<<< HEAD
 	
 	# countdown for attack boost
 	if Global.is_attacking:
 		attack_time_left = max(0, attack_time_left - 1)
 		update_attack_boost.emit(attack_time_left)
-		print(attack_time_left)
+		# gets the colliders of our raycast
+		var target = $AttackRayCast.get_collider()
+		# is target invalid
+		if target != null:
+			#remove box
+			if target.name == "box" and Input.is_action_pressed("ui_attack"):
+				Global.disable_spawning()
+				target.queue_free()
+			#remove bomb
+			if target.name == "Bomb" and Input.is_action_pressed("ui_attack"):
+				Global.is_bomb_moving = false
+=======
+>>>>>>> parent of 649fae7 (fix the bug when player climbing and take the damage , will stuck at ladder)
 
 func horizontal_movement():
 	# if keys are pressed it will return 1 for ui_right, -1 for ui_left, and 0 for neither
@@ -71,7 +81,7 @@ func player_animation():
 # singular input captures
 func _input(event):
 	# on attacking
-	if Input.is_action_just_pressed("ui_attack"):
+	if event.is_action_just_pressed("ui_attack"):
 		if Global.is_attacking == true:
 			$AnimatedSprite2D.play("attack")
 		
@@ -80,18 +90,20 @@ func _input(event):
 		velocity.y = jump_height
 		$AnimatedSprite2D.play("jump")
 		
-		
 	# on climbing ladders
 	if Global.is_climbing == true:
+		if !Input.is_anything_pressed():
+			$AnimatedSprite2D.play("idle")
+			
 		if Input.is_action_pressed("ui_up"):
 			$AnimatedSprite2D.play("climb")
 			gravity = 100
 			velocity.y = -200
-		
 			
 	# reset gravity
-	elif Global.is_climbing == false:
+	else:
 		gravity = 200
+		Global.is_climbing = false
 		Global.is_jumping = false
 
 
@@ -154,9 +166,6 @@ func take_damage():
 		$AnimatedSprite2D.play("damage")
 		# allows animation to play'
 		set_physics_process(false)
-		Global.is_climbing = false
-		Global.is_jumping = false
-		
 		
 # add to pickups to our player and updates our lives / attack boosts
 func add_pickup(pickup):

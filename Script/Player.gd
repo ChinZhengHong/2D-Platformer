@@ -65,7 +65,7 @@ func player_animation():
 		$CollisionShape2D.position.x = -7
 		
 	# on idle if nothing is being pressed
-	if !Input.is_anything_pressed():
+	if !Input.is_anything_pressed() or (Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_right")):
 		$AnimatedSprite2D.play("idle")
 		
 # singular input captures
@@ -77,6 +77,7 @@ func _input(event):
 		
 	# on jump
 	if event.is_action_pressed("ui_jump") and is_on_floor():
+		set_physics_process(true)
 		velocity.y = jump_height
 		$AnimatedSprite2D.play("jump")
 		

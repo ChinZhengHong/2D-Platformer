@@ -71,7 +71,7 @@ func player_animation():
 # singular input captures
 func _input(event):
 	# on attacking
-	if Input.is_action_just_pressed("ui_attack"):
+	if Input.is_action_just_pressed("ui_attack") and is_on_floor():
 		if Global.is_attacking == true:
 			$AnimatedSprite2D.play("attack")
 			set_physics_process(false)

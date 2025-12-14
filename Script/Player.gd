@@ -74,6 +74,7 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_attack"):
 		if Global.is_attacking == true:
 			$AnimatedSprite2D.play("attack")
+			set_physics_process(false)
 		
 	# on jump
 	if event.is_action_pressed("ui_jump") and is_on_floor():

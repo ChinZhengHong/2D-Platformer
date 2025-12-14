@@ -42,7 +42,7 @@ func _physics_process(delta):
 	if Global.is_attacking:
 		attack_time_left = max(0, attack_time_left - 1)
 		update_attack_boost.emit(attack_time_left)
-		print(attack_time_left)
+		
 
 func horizontal_movement():
 	# if keys are pressed it will return 1 for ui_right, -1 for ui_left, and 0 for neither
@@ -77,7 +77,7 @@ func _input(event):
 			set_physics_process(false)
 		
 	# on jump
-	if event.is_action_pressed("ui_jump") and is_on_floor():
+	if event.is_action_pressed("ui_jump") and is_on_floor() and $AnimatedSprite2D.animation != "damage":
 		set_physics_process(true)
 		velocity.y = jump_height
 		$AnimatedSprite2D.play("jump")
@@ -167,7 +167,7 @@ func add_pickup(pickup):
 		if lives < max_lives:
 			lives += 1
 			update_lives.emit(lives,max_lives)
-			print(lives)
+			
 	
 	# temporary allow us to destroy boxes/bombs
 	if pickup == Global.Pickups.ATTACK:

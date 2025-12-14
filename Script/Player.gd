@@ -68,6 +68,10 @@ func player_animation():
 	if !Input.is_anything_pressed() or (Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_right")):
 		$AnimatedSprite2D.play("idle")
 		
+	# if is on air
+	if !is_on_floor():
+		$AnimatedSprite2D.play("jump")
+		
 # singular input captures
 func _input(event):
 	# on attacking
@@ -80,7 +84,7 @@ func _input(event):
 	if event.is_action_pressed("ui_jump") and is_on_floor() and $AnimatedSprite2D.animation != "damage":
 		set_physics_process(true)
 		velocity.y = jump_height
-		$AnimatedSprite2D.play("jump")
+		
 		
 		
 	# on climbing ladders
@@ -151,7 +155,7 @@ func take_damage():
 	if lives > 0:
 		lives = lives - 1
 		update_lives.emit(lives,max_lives)
-		print(lives)
+		
 		# play damage animation
 		$AnimatedSprite2D.play("damage")
 		# allows animation to play'

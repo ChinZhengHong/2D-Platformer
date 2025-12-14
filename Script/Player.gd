@@ -112,7 +112,7 @@ func _ready():
 	update_lives.connect($UI/Health.update_lives)
 	
 	# show our correct lives value on load
-	$UI/Health/Label.text = str(lives)
+	$UI/Health/Label.text = str(lives) + "/" + str(max_lives)
 	
 func _process(_delta):
 	if velocity.x > 0: # Moving right

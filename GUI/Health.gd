@@ -9,4 +9,4 @@ extends ColorRect
 # update label text when signal is emitted
 @warning_ignore("unused_parameter")
 func update_lives(lives,max_lives):
-	label.text = str(lives)
+	label.text = str(lives) + "/" + str(max_lives)

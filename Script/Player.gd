@@ -162,6 +162,10 @@ func take_damage():
 		set_physics_process(false)
 		Global.is_climbing = false
 		Global.is_jumping = false
+	
+	if lives == 0:
+		print("GAME OVER")
+		get_tree().quit()
 		
 		
 # add to pickups to our player and updates our lives / attack boosts

@@ -180,3 +180,7 @@ func _on_attack_boost_timer_timeout():
 	# set attack back to false if the time on boost runs out
 	if attack_time_left <= 0:
 		Global.is_attacking = false
+
+
+func _on_button_pressed() -> void:
+	get_tree().quit()

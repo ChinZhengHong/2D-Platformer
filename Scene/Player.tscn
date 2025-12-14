@@ -395,8 +395,18 @@ theme_override_font_sizes/font_size = 15
 text = "0"
 vertical_alignment = 1
 
+[node name="Button" type="Button" parent="UI"]
+offset_left = 145.0
+offset_top = 24.0
+offset_right = 237.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("10_ljuf4")
+theme_override_font_sizes/font_size = 15
+text = "Quit Game"
+
 [node name="AttackBoostTimer" type="Timer" parent="."]
 wait_time = 1000.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="AttackBoostTimer" to="." method="_on_attack_boost_timer_timeout"]

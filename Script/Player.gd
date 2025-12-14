@@ -89,6 +89,7 @@ func _input(event):
 		
 	# on climbing ladders
 	if Global.is_climbing == true:
+		$AnimatedSprite2D.play("idle")
 		if Input.is_action_pressed("ui_up"):
 			$AnimatedSprite2D.play("climb")
 			gravity = 100
